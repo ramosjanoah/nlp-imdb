@@ -29,7 +29,11 @@ def scrapePage(url_string):
     # check the review content if it is in trash_p_list, if no, include it to review
     for review in review_list:
         if str(review) not in trash_p_list:
-            all_review_content.append(str(review))
+            # remove html tag in review
+            final_review = str(review).replace("<p>","")
+            final_review = final_review.replace("</p>","")
+            final_review = final_review.replace("<br/>","")
+            all_review_content.append(final_review)
     
     return all_review_content
 
