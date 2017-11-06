@@ -23,13 +23,13 @@ def scrapePage(url_string):
     review_list = soup.find(id="tn15content").findAll('p')
 
     # trash_p_list is some <p> that has to be excluded because it doesnt a review
-    trash_p_list = ["<b>*** This review may contain spoilers ***</b>", 
-                    '<a href="reviews-enter">Add another review</a>']
+    trash_p_list = ["<p><b>*** This review may contain spoilers ***</b></p>", 
+                    '<p><a href="reviews-enter">Add another review</a></p>']
     
     # check the review content if it is in trash_p_list, if no, include it to review
     for review in review_list:
-        if str(review.contents[0]) not in trash_p_list:
-            all_review_content.append(review.contents[0])
+        if str(review) not in trash_p_list:
+            all_review_content.append(str(review))
     
     return all_review_content
 
