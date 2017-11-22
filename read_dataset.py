@@ -1,27 +1,38 @@
 import glob
 import nltk
 import dill
+import importlib
+import negation_handling as neghandle
+
+
 from nltk.corpus import stopwords
 
-def save_from_corpus(testtrain, posneg):
-	reviews = []
 
-	path = "data/{}/{}/*.txt".format(testtrain, posneg)
-	files = glob.glob(path)
-	for i, file in enumerate(files):
-		if i % 100 == 0:
-			print(i)
-		with open(file, "r") as fi:
-			review = fi.read()
-		review = nltk.word_tokenize(review)
-		review = nltk.pos_tag(review)
-		reviews.append(review)
+
+def save_from_corpus(testtrain, posneg):
+    # tidak di sentence tokenize
+    reviews = []
+    
+    path = "data/{}/{}/*.txt".format(testtrain, posneg)
+    files = glob.glob(path)
+    for i, file in enumerate(files):
+        if i % 100 == 0:
+            print(i)
+        with open(file, "r") as fi:
+            review = fi.read()
+        review = nltk.word_tokenize(review)
+        review = nltk.pos_tag(review)
+        
+        # handling negation by ramos
+        review = neghandle.handling_negation_of_tokenized_sentence(review)
+
+        reviews.append(review)
 		
 	# Masukin ke file
-	print("Saving...")
-	with open("data/structured/{}/{}.pkl".format(testtrain, posneg), "wb") as fo:
-		dill.dump(reviews, fo)
-	print(len(reviews))
+    print("Saving...")
+    with open("data/structured/review_neg_handled/{}/{}.pkl".format(testtrain, posneg), "wb") as fo:
+        dill.dump(reviews, fo)
+    print(len(reviews))
 
 def save_from_corpus_to_sent(testtrain, posneg):
 	reviews = []
@@ -33,15 +44,19 @@ def save_from_corpus_to_sent(testtrain, posneg):
 			print(i)
 		with open(file, "r") as fi:
 			review = fi.read()
-		review_sents = nltk.sent_tokenize(review)
-		for sent in review_sents:
-			reviews.append(nltk.word_tokenize(sent))
+		#review_sents = nltk.sent_tokenize(review)
+		review = neghandle.review_to_tokenized_sentences(review)        
+		for sentence in review:
+			reviews.append(sentence)
 		
 	# Masukin ke file
 	print("Saving...")
-	with open("data/structured/sentence/{}/{}.pkl".format(testtrain, posneg), "wb") as fo:
+	with open("data/structured/sentence_neg_handled/{}/{}.pkl".format(testtrain, posneg), "wb") as fo:
 		dill.dump(reviews, fo)
+
 	print(len(reviews))
+    
+
 
 def load(path):
 	with open(path, 'rb') as fi:
