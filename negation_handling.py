@@ -71,13 +71,28 @@ def testing_tokenize_review():
             
 if __name__ == "__main__":
     # it is saved to data/structured/sentence_neg_handled/
-    read_dataset.save_from_corpus_to_sent("train","pos")
-    read_dataset.save_from_corpus_to_sent("test","pos")
-    read_dataset.save_from_corpus_to_sent("train","neg")
-    read_dataset.save_from_corpus_to_sent("test","neg")
+    # print("[PROCESS] : read_dataset.save_from_corpus_to_sent('train','pos')")
+    # read_dataset.save_from_corpus_to_sent("train","pos")
+
+    # print("[PROCESS] : read_dataset.save_from_corpus_to_sent('test','pos')")
+    # read_dataset.save_from_corpus_to_sent("test","pos")
+
+    # print("[PROCESS] : read_dataset.save_from_corpus_to_sent('train','neg')")
+    # read_dataset.save_from_corpus_to_sent("train","neg")
+
+    # print("[PROCESS] : read_dataset.save_from_corpus_to_sent('test','neg')")
+    # read_dataset.save_from_corpus_to_sent("test","neg")
+
+    print("[PROCESS] : read_dataset.save_from_corpus('train','pos')")
     read_dataset.save_from_corpus("train","pos")
+
+    print("[PROCESS] : read_dataset.save_from_corpus('test','pos')")
     read_dataset.save_from_corpus("test","pos")
+
+    print("[PROCESS] : read_dataset.save_from_corpus('train','neg')")
     read_dataset.save_from_corpus("train","neg")
+
+    print("[PROCESS] : read_dataset.save_from_corpus('test','neg')")
     read_dataset.save_from_corpus("test","neg")
     
     
