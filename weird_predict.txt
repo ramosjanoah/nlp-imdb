@@ -1,0 +1,38 @@
+
+("A film about a Stephen King story? Directed by Frank Darabont.  .  .  Who?  
+ Starring Tim Robbins.  .  .  Wasn't he the guy from Howard the Duck?  
+ I admit, only the sublime acting talents of Morgan Freeman took me along to see this movie.  
+ Now the only questions I have to ask are:  Why didn't EVERYBODY go to see this movie?  and, Why didn't Morgan Freeman win the Oscar?  
+ Tom Hanks is a fine actor but, he should never have beaten Morgan.  
+ Once again a Stephen King short story translates to film better than his horror opus'.  
+ Tim Robbins pulls out his finest performance to date, and, Mr Darabont take a bow.  
+ Very rarely are you left with a large smile and warm heart at the end of a movie but, 
+ I could have danced as the camera slowly panned back from the beach.  .  .  Perfect.", 
+ '10/10')
+
+
+Predict : 1
+
+
+('Ten reasons why this movie sucks:
+1) Fallen Angel - 1945 Dana Andrews, Linda Darnell, Alice Faye. 
+2)Where the Sidewalk ends - 1950 Dana Andrews, Gene Tierney 
+3) BetweenMidnight and Dawn - 1950 Edmond O\'Brien, Gale Storm 
+4) The LostSquadron - 1932 Richard Dix, Mary Astor 
+5) I Walk Alone - 1948 KirkDouglas, Lisbeth Scott, Wendell Corey 
+6) The File on Thelma Jordan -1950 Barbara Stanwyck, Wendell Corey 
+7) Woman In Hiding - 1950 IdaLupino, Howard Duff, Stephen McNally 
+8) City Across the River - 1949Stephen McNally, Tony Curtis 
+9) Strangers When We Meet - 1960 KirkDouglas, Kim Novak 
+10) Heaven With a Gun - 1969 Glenn Ford, CarolynJonesThe 
+
+above ten classics have never been released on video and ALL OFTHEM have a 
+rating far greater than Gigli. Gigli is a classic example
+of the idiotic marketing practices that go on. 
+Gigli is available onvideo, simply because the ignorant masses are not 
+told about the greatfilms of the past which are far superior, but neglected. 
+Only the oneswho prefer to "go beyond the box" can appreciate great cinema 
+that ispractically non-existent in today\'s movies.', '1/10')
+
+Predict : 0
+

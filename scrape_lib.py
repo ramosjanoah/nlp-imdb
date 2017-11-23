@@ -50,8 +50,10 @@ def scrapePage(url_string):
             final_review = final_review.replace("</p>","")
             final_review = final_review.replace("<br/>","")
             final_review = final_review.replace("\n","")
-
-            all_review_content.append((final_review, star_list[idx_counter]))
+            try:
+                all_review_content.append((final_review, star_list[idx_counter]))
+            except IndexError:
+                pass
             idx_counter += 1
     
         printReview(all_review_content)
@@ -93,6 +95,3 @@ def test_scrapePages():
     url_string = 'http://www.imdb.com/title/tt2250912/reviews'
     reviews = scrapePages(url_string, 50)
     printReview(reviews)
-
-test_scrapePages()
-

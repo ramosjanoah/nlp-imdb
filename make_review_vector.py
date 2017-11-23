@@ -5,7 +5,7 @@ import dill
 from nltk.corpus import stopwords
 from gensim.models.word2vec import Word2Vec
 
-
+set_of_unknown_words = set()
 stopword_set = set(stopwords.words('english'))
 
 google_word2vec_path = "model/GoogleNews-vectors-negative300.bin"

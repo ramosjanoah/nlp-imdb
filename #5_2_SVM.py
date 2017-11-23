@@ -4,10 +4,19 @@ from sklearn import svm
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
+from sklearn.model_selection import GridSearchCV
+import sys
 
-size = 100
+
+
+size = 300
 window = 7
 min_count = 3
+
+
+print("SIZE : " + str(size))
+print("WINDOW : " + str(window))
+print("MIN_COUNT : " + str(min_count))
 
 # TRAINING DATA
 vector_train_neg_fname = 'data/structured/vector{}_{}_{}/train/neg.pkl'.format(size,window,min_count)
@@ -82,7 +91,7 @@ f1score = f1_score(class_vector_test, results)
 print("Accuracy = " + str(accuracy))
 print("Precision = " + str(precision))
 print("Recall = " + str(recall))
-print("F1 = " + str(f1score))
+print("F1 = " + str(f1score))	
 
 # clf_pos = svm.SVC()
 # clf_pos.fit(vector_train_pos,[1])
@@ -90,4 +99,4 @@ print("F1 = " + str(f1score))
 def saveModel(clf, filename):
     joblib.dump(clf,"model/" + filename)
 
-saveModel(clf, "model_svm_full_train_{}_{}_{}.pkl".format(size,window,min_count))
+saveModel(clf, "model_svm_grid_{}_{}_{}.pkl".format(size,window,min_count))

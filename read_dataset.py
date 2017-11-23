@@ -4,10 +4,7 @@ import dill
 import importlib
 import negation_handling as neghandle
 
-
 from nltk.corpus import stopwords
-
-
 
 def save_from_corpus(testtrain, posneg):
     # tidak di sentence tokenize
