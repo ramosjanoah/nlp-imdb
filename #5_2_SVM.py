@@ -4,12 +4,12 @@ from sklearn import svm
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
-from sklearn.model_selection import GridSearchCV
 
 size = 100
 window = 7
-min_count = 7
+min_count = 3
 
+# TRAINING DATA
 vector_train_neg_fname = 'data/structured/vector{}_{}_{}/train/neg.pkl'.format(size,window,min_count)
 # print(vector_train_neg_fname)
 vector_train_neg = read_dataset.load(vector_train_neg_fname)
@@ -18,43 +18,48 @@ vector_train_pos_fname = 'data/structured/vector{}_{}_{}/train/pos.pkl'.format(s
 # print(vector_train_pos_fname)
 vector_train_pos = read_dataset.load(vector_train_pos_fname)
 
+# TESTING DATA
+vector_test_neg_fname = 'data/structured/vector{}_{}_{}/test/neg.pkl'.format(size,window,min_count)
+vector_test_neg = read_dataset.load(vector_test_neg_fname)
+
+vector_test_pos_fname = 'data/structured/vector{}_{}_{}/test/pos.pkl'.format(size,window,min_count)
+vector_test_pos = read_dataset.load(vector_test_pos_fname)
+
 vector_neg_len = len(vector_train_neg)
 vector_pos_len = len(vector_train_pos)
 
-train_percent = 0.1
-test_percent = 0.05
+# train_percent = 1
+# test_percent = 0.2
 
-train_num = int(train_percent * vector_neg_len)
-test_num = int(test_percent * vector_neg_len)
+# train_num = int(train_percent * vector_neg_len)
+# test_num = int(test_percent * vector_neg_len)
 
-vector_train = vector_train_neg[:train_num] + vector_train_pos[:train_num]
-vector_test = vector_train_neg[train_num : test_num + train_num] + vector_train_pos[train_num : test_num + train_num]
-
+vector_train = vector_train_neg + vector_train_pos
+vector_test = vector_test_neg + vector_test_pos
 svm = svm.SVC()
 
 class_vector_neg = []
-for i in range (0,train_num):
+for i in range (0,vector_neg_len):
     class_vector_neg.append(0)
 
 class_vector_pos = []
-for i in range (0,train_num):
+for i in range (0,vector_pos_len):
     class_vector_pos.append(1)
 
 class_vector = class_vector_pos + class_vector_neg
 
 class_vector_neg_test = []
-for i in range (0,test_num):
+for i in range (0,vector_neg_len):
     class_vector_neg_test.append(0)
 
 class_vector_pos_test = []
-for i in range (0,test_num):
+for i in range (0,vector_pos_len):
     class_vector_pos_test.append(1)
 
 class_vector_test = class_vector_pos_test + class_vector_neg_test
 
 
-# svm.fit(vector_train, class_vector)
-
+# clf.fit(vector_train, class_vector)
 
 parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
 
@@ -85,4 +90,4 @@ print("F1 = " + str(f1score))
 def saveModel(clf, filename):
     joblib.dump(clf,"model/" + filename)
 
-saveModel(clf, "model_svm_sampling_train_{}_{}_{}.pkl".format(size,window,min_count))
+saveModel(clf, "model_svm_full_train_{}_{}_{}.pkl".format(size,window,min_count))
