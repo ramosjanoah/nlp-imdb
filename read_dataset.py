@@ -21,13 +21,11 @@ def save_from_corpus(testtrain, posneg):
         with open(file, "r") as fi:
             review = fi.read()
         review = nltk.word_tokenize(review)
-        review = nltk.pos_tag(review)
         
         # handling negation by ramos
-        review = neghandle.handling_negation_of_tokenized_sentence(review)
+        review = neghandle.handling_negation_of_tokenized_sentence(review) 
 
-        reviews.append(review)
-		
+        reviews.append(review)		
 	# Masukin ke file
     print("Saving...")
     with open("data/structured/review_neg_handled/{}/{}.pkl".format(testtrain, posneg), "wb") as fo:
