@@ -42,15 +42,14 @@ if __name__ == '__main__': #created by ramos
 		sentence_train_neg = dill.load(fi)
      
     # join the data    
-	all_data = sentence_train_pos + sentence_train_neg
+	all_data = sentence_train_pos + sentence_train_neg 
 	model_word2vec  = Word2Vec(all_data, size=100, window=7, min_count=7, workers=4)
 
     # filename to save (or load)			
-	fname = "model/100-ver3.pkl"
+	fname = "model/100-ver2.pkl"
     
     # check model
 	print(model_word2vec.wv['good'])    
     
     # save the file in fname    
 	model_word2vec.save(fname)
-    
