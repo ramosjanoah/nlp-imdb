@@ -16,6 +16,7 @@ def svm():
 	clf = 'svm'
 	score = score_imdb_url(url, scrape_limit=scrape_limit, clf=clf)
 	print("DONEEEEEEEEEEEEEEEEEEEEEEEEe")
+	score = score * 10
 	return str(score)
 
 if __name__ == "__main__":

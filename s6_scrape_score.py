@@ -18,6 +18,15 @@ url_string = 'http://www.imdb.com/title/tt2948356/reviews' # Zootopia
 url_string = 'http://www.imdb.com/title/tt0111161/reviews' # The Shawshank Redemption
 url_string = 'http://www.imdb.com/title/tt0299930/reviews' # Gigli
 
+#param
+size = 300
+window = 7
+min_count = 3
+
+home = "/home/ramosjanoah/Documents/nlp-imdb/"
+w2v_path = home + "model/w2v/model{}_{}_{}.pkl".format(size, window, min_count)
+svm_path = home + "model/svm/model_svm_grid_300_7_3.pkl"
+
 def loadModel(filename):
         print("Load model from " + filename)
         clf = joblib.load(filename) 
@@ -26,20 +35,16 @@ def loadModel(filename):
 def score_imdb_url(url_string, **kwargs):
     scrape_limit = int(kwargs.get('scrape_limit', 100))
 
-     #param
-    size = 300
-    window = 7
-    min_count = 3
-
+     
     if (kwargs.get('clf', 'svm') == 'svm'):
         # SVM
-        clf = loadModel("/home/alson/Desktop/nlp-imdb/model/svm/model_svm_grid_300_7_3.pkl")
+        clf = loadModel(svm_path)
     else:
         # C-LSTM
-        clf = 
-                      
+        clf = None
+                       
 
-    model_filename = "/home/alson/Desktop/nlp-imdb/model/w2v/model{}_{}_{}.pkl".format(size, window, min_count)
+    model_filename = w2v_path
     model_word2vec = Word2Vec.load(model_filename)
 
     reviews_raw= sl.scrapePages(url_string, scrape_limit)
